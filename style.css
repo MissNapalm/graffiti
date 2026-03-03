@@ -62,7 +62,7 @@ body::before {
   position: relative;
   max-height: 33vh;
   width: auto;
-  max-width: 100%;
+  max-width: 116%;
   object-fit: contain;
   object-position: left top;
   animation: slideDown 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
