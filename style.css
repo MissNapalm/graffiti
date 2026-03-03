@@ -36,7 +36,7 @@ body::before {
   padding-bottom: 20px;
   overflow: hidden;
   position: relative;
-  z-index: 1;
+  z-index: auto;
 }
 
 #left-col {
@@ -49,24 +49,30 @@ body::before {
 
 #blotch-img {
   position: fixed;
-  top: -10;
-  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -15px;
   width: 104vw;
   max-width: none;
   max-height: none;
   z-index: 0;
   pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  animation: sprayReveal 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0s forwards;
 }
 
 #welcome-img {
-  position: relative;
-  max-height: 33vh;
-  width: auto;
-  max-width: 116%;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 85px;
+  width: 45.156%;
+  height: 45.156vh;
   object-fit: contain;
   object-position: left top;
-  animation: slideDown 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  z-index: 1;
+  z-index: 3;
+  clip-path: inset(0 100% 0 0);
+  animation: sprayReveal 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s forwards;
 }
 
 #mid-col {
@@ -78,14 +84,47 @@ body::before {
 }
 
 #menu-img {
-  max-height: 33vh;
-  width: auto;
-  max-width: 100%;
+  position: fixed;
+  top: 99px;
+  right: 14px;
+  width: 49.68%;
+  height: 49.68vh;
   object-fit: contain;
-  object-position: left top;
+  object-position: right top;
+  z-index: 2;
+  clip-path: inset(0 100% 0 0);
+  animation: sprayReveal 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 1.2s forwards;
 }
 
-@keyframes slideDown {
-  from { transform: translateY(-120vh); }
-  to   { transform: translateY(0); }
+#ghetto-text {
+  display: none;
+}
+
+#shoe-img {
+  position: fixed;
+  bottom: 20px;
+  right: 62px;
+  width: 45.5%; 
+  height: auto;
+  object-fit: contain;
+  z-index: 1;
+  clip-path: inset(0 100% 0 0);
+  animation: sprayReveal 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 1.6s forwards;
+}
+
+@keyframes sprayReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    filter: blur(6px) opacity(0.3);
+  }
+  30% {
+    filter: blur(4px) opacity(0.6);
+  }
+  60% {
+    filter: blur(2px) opacity(0.85);
+  }
+  100% {
+    clip-path: inset(0 0% 0 0);
+    filter: blur(0px) opacity(1);
+  }
 }
